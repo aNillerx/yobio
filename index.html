@@ -3,9 +3,160 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Привет, мир!</title>
+    <title>HiBio | Python Dev</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #000;
+            color: #fff;
+            font-family: -apple-system, system-ui, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Меню в углу */
+        header {
+            width: 100%;
+            padding: 20px 40px;
+            box-sizing: border-box;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        /* Контейнер для всего контента */
+        .wrapper {
+            max-width: 1100px;
+            width: 100%;
+            margin-top: 100px;
+            padding: 20px;
+            box-sizing: border-box;
+            text-align: center;
+        }
+
+        /* ТЕКСТ НАВЕРХУ ПО СЕРЕДИНЕ */
+        .intro-section {
+            margin-bottom: 60px;
+        }
+
+        .intro-text {
+            font-size: 2.5rem;
+            font-weight: 700;
+            line-height: 1.2;
+            margin: 0 auto;
+            max-width: 800px;
+        }
+
+        .intro-text span {
+            color: #58a6ff;
+        }
+
+        /* НИЖНЯЯ ЧАСТЬ: НОВОСТИ СЛЕВА, ФОТО СПРАВА */
+        .main-content {
+            display: flex;
+            gap: 40px;
+            align-items: flex-start;
+            text-align: left;
+        }
+
+        /* Новости слева */
+        .news-side {
+            flex: 1;
+        }
+
+        .news-title {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #555;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .news-card {
+            background: #0f0f11;
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid #222;
+            line-height: 1.7;
+            color: #ccc;
+            font-size: 1.1rem;
+        }
+
+        /* Фото справа */
+        .photo-side {
+            flex: 1;
+        }
+
+        .photo-side img {
+            width: 100%;
+            height: auto;
+            border-radius: 12px; /* Убрал кружочек, теперь углы чуть скруглены для стиля */
+            display: block;
+            border: 1px solid #333;
+        }
+
+        /* Контакты под новостями */
+        .contacts {
+            margin-top: 30px;
+            font-size: 0.9rem;
+        }
+
+        .contacts a {
+            color: #58a6ff;
+            text-decoration: none;
+            margin-right: 20px;
+        }
+
+        /* Адаптив для телефонов */
+        @media (max-width: 850px) {
+            .main-content {
+                flex-direction: column;
+            }
+            .intro-text {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
 </head>
 <body>
-    <h1>Привет, мир!</h1>
+
+    <header>
+        <div class="logo">HiBio</div>
+    </header>
+
+    <div class="wrapper">
+        <section class="intro-section">
+            <h1 class="intro-text">
+                Новости aNillerx. Боты на <span>Python</span>. <br>
+            </h1>
+        </section>
+
+        <main class="main-content">
+            <div class="news-side">
+                <span class="news-title">Latest Updates</span>
+                <div class="news-card">
+                    Бот был создан для ограниченой аудитории трех канала. Максимум могли присоедениться 20 человек. Мероприятие: Пробежка в Москве 5 км. Бот имеет базу данных и имеет обход ошибки с гонкой в таблицею. Код написан на Python 3.10. Все 20 мест были заняты через 15 минут после публикации. Бот: @four_chair_Robot
+                </div>
+                <div class="contacts">
+                    <a href="mailto:hdr_vision@icloud.com">hdr_vision@icloud.com</a>
+                    <a href="mailto:askfornova@gmail.com">askfornova@gmail.com</a>
+                </div>
+            </div>
+
+            <div class="photo-side">
+                <img src="japan.jpg" alt="Developer Photo">
+            </div>
+        </main>
+    </div>
+
 </body>
 </html>
