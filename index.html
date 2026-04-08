@@ -1,162 +1,474 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HiBio | Python Dev</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            background: #000;
-            color: #fff;
-            font-family: -apple-system, system-ui, sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>YoBio — Твоё био, твои правила</title>
+  <meta name="description" content="YoBio — место, где каждый имеет право на своё био. Создай свою красивую страницу и будь собой." />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    }
 
-        /* Меню в углу */
-        header {
-            width: 100%;
-            padding: 20px 40px;
-            box-sizing: border-box;
-            position: absolute;
-            top: 0;
-            left: 0;
-        }
+    body {
+      background: linear-gradient(135deg, #0a0a0a, #111827, #1f2937);
+      color: white;
+      overflow-x: hidden;
+    }
 
-        .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #fff;
-        }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
 
-        /* Контейнер для всего контента */
-        .wrapper {
-            max-width: 1100px;
-            width: 100%;
-            margin-top: 100px;
-            padding: 20px;
-            box-sizing: border-box;
-            text-align: center;
-        }
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: auto;
+    }
 
-        /* ТЕКСТ НАВЕРХУ ПО СЕРЕДИНЕ */
-        .intro-section {
-            margin-bottom: 60px;
-        }
+    /* NAVBAR */
+    nav {
+      width: 100%;
+      padding: 20px 0;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      background: rgba(10, 10, 10, 0.75);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
 
-        .intro-text {
-            font-size: 2.5rem;
-            font-weight: 700;
-            line-height: 1.2;
-            margin: 0 auto;
-            max-width: 800px;
-        }
+    .nav-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
 
-        .intro-text span {
-            color: #58a6ff;
-        }
+    .logo {
+      font-size: 28px;
+      font-weight: 800;
+      color: #7c3aed;
+      letter-spacing: 1px;
+    }
 
-        /* НИЖНЯЯ ЧАСТЬ: НОВОСТИ СЛЕВА, ФОТО СПРАВА */
-        .main-content {
-            display: flex;
-            gap: 40px;
-            align-items: flex-start;
-            text-align: left;
-        }
+    .nav-links {
+      display: flex;
+      gap: 25px;
+      font-size: 15px;
+      color: #d1d5db;
+    }
 
-        /* Новости слева */
-        .news-side {
-            flex: 1;
-        }
+    .nav-links a:hover {
+      color: #fff;
+      transition: 0.2s;
+    }
 
-        .news-title {
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: #555;
-            margin-bottom: 20px;
-            display: block;
-        }
+    /* HERO */
+    .hero {
+      min-height: 92vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+    }
 
-        .news-card {
-            background: #0f0f11;
-            padding: 30px;
-            border-radius: 12px;
-            border: 1px solid #222;
-            line-height: 1.7;
-            color: #ccc;
-            font-size: 1.1rem;
-        }
+    .hero::before {
+      content: "";
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(124,58,237,0.35), transparent 70%);
+      top: 10%;
+      left: 50%;
+      transform: translateX(-50%);
+      filter: blur(60px);
+      z-index: 0;
+    }
 
-        /* Фото справа */
-        .photo-side {
-            flex: 1;
-        }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 850px;
+    }
 
-        .photo-side img {
-            width: 100%;
-            height: auto;
-            border-radius: 12px; /* Убрал кружочек, теперь углы чуть скруглены для стиля */
-            display: block;
-            border: 1px solid #333;
-        }
+    .hero-badge {
+      display: inline-block;
+      padding: 10px 18px;
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 999px;
+      background: rgba(255,255,255,0.05);
+      color: #c4b5fd;
+      margin-bottom: 25px;
+      font-size: 14px;
+    }
 
-        /* Контакты под новостями */
-        .contacts {
-            margin-top: 30px;
-            font-size: 0.9rem;
-        }
+    .hero h1 {
+      font-size: 58px;
+      line-height: 1.1;
+      margin-bottom: 20px;
+      font-weight: 800;
+    }
 
-        .contacts a {
-            color: #58a6ff;
-            text-decoration: none;
-            margin-right: 20px;
-        }
+    .hero h1 span {
+      color: #8b5cf6;
+    }
 
-        /* Адаптив для телефонов */
-        @media (max-width: 850px) {
-            .main-content {
-                flex-direction: column;
-            }
-            .intro-text {
-                font-size: 1.8rem;
-            }
-        }
-    </style>
+    .hero p {
+      font-size: 20px;
+      color: #d1d5db;
+      margin-bottom: 35px;
+      line-height: 1.7;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 18px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 15px 28px;
+      border-radius: 14px;
+      font-weight: 700;
+      transition: 0.25s ease;
+      display: inline-block;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #7c3aed, #9333ea);
+      color: white;
+      box-shadow: 0 10px 30px rgba(124,58,237,0.35);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 14px 40px rgba(124,58,237,0.45);
+    }
+
+    .btn-secondary {
+      border: 1px solid rgba(255,255,255,0.14);
+      background: rgba(255,255,255,0.04);
+      color: #f3f4f6;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255,255,255,0.08);
+      transform: translateY(-3px);
+    }
+
+    /* SECTION */
+    section {
+      padding: 100px 0;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 18px;
+      font-size: 42px;
+      font-weight: 800;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      color: #9ca3af;
+      max-width: 760px;
+      margin: 0 auto 55px;
+      font-size: 18px;
+      line-height: 1.7;
+    }
+
+    /* CARDS */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 25px;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      padding: 28px;
+      border-radius: 24px;
+      backdrop-filter: blur(10px);
+      transition: 0.3s ease;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(139,92,246,0.45);
+      box-shadow: 0 18px 45px rgba(124,58,237,0.15);
+    }
+
+    .card-icon {
+      font-size: 34px;
+      margin-bottom: 18px;
+    }
+
+    .card h3 {
+      font-size: 22px;
+      margin-bottom: 12px;
+      color: #fff;
+    }
+
+    .card p {
+      color: #d1d5db;
+      line-height: 1.7;
+      font-size: 16px;
+    }
+
+    /* RIGHTS BLOCK */
+    .rights-box {
+      background: linear-gradient(135deg, rgba(124,58,237,0.15), rgba(255,255,255,0.03));
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 28px;
+      padding: 50px;
+      text-align: center;
+      max-width: 950px;
+      margin: auto;
+      box-shadow: 0 12px 50px rgba(0,0,0,0.2);
+    }
+
+    .rights-box h2 {
+      font-size: 40px;
+      margin-bottom: 20px;
+      font-weight: 800;
+    }
+
+    .rights-box p {
+      font-size: 20px;
+      color: #d1d5db;
+      line-height: 1.8;
+    }
+
+    /* CONTACT */
+    .contact-box {
+      max-width: 850px;
+      margin: auto;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 28px;
+      padding: 45px;
+      text-align: center;
+      box-shadow: 0 10px 35px rgba(0,0,0,0.18);
+    }
+
+    .contact-box h2 {
+      font-size: 38px;
+      margin-bottom: 15px;
+    }
+
+    .contact-box p {
+      color: #d1d5db;
+      font-size: 18px;
+      line-height: 1.8;
+      margin-bottom: 28px;
+    }
+
+    .email-list {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      align-items: center;
+      margin-top: 25px;
+    }
+
+    .email-item {
+      display: inline-block;
+      padding: 14px 22px;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: #f3f4f6;
+      font-size: 17px;
+      transition: 0.25s;
+    }
+
+    .email-item:hover {
+      transform: scale(1.03);
+      border-color: rgba(139,92,246,0.45);
+    }
+
+    /* FOOTER */
+    footer {
+      padding: 35px 0;
+      text-align: center;
+      color: #9ca3af;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      margin-top: 50px;
+      font-size: 15px;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 38px;
+      }
+
+      .hero p {
+        font-size: 17px;
+      }
+
+      .section-title,
+      .rights-box h2,
+      .contact-box h2 {
+        font-size: 30px;
+      }
+
+      .rights-box,
+      .contact-box {
+        padding: 30px 22px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+    }
+  </style>
 </head>
 <body>
 
-    <header>
-        <div class="logo">HiBio</div>
-    </header>
-
-    <div class="wrapper">
-        <section class="intro-section">
-            <h1 class="intro-text">
-                Новости aNillerx. Боты на <span>Python</span>. <br>
-            </h1>
-        </section>
-
-        <main class="main-content">
-            <div class="news-side">
-                <span class="news-title">Latest Updates</span>
-                <div class="news-card">
-                    Бот был создан для ограниченой аудитории трех канала. Максимум могли присоедениться 20 человек. Мероприятие: Пробежка в Москве 5 км. Бот имеет базу данных и имеет обход ошибки с гонкой в таблицею. Код написан на Python 3.10. Все 20 мест были заняты через 15 минут после публикации. Бот: @four_chair_Robot
-                </div>
-                <div class="contacts">
-                    <a href="mailto:hdr_vision@icloud.com">hdr_vision@icloud.com</a>
-                    <a href="mailto:askfornova@gmail.com">askfornova@gmail.com</a>
-                </div>
-            </div>
-
-            <div class="photo-side">
-                <img src="japan.jpg" alt="Developer Photo">
-            </div>
-        </main>
+  <!-- NAVBAR -->
+  <nav>
+    <div class="container nav-inner">
+      <div class="logo">YoBio</div>
+      <div class="nav-links">
+        <a href="#about">О нас</a>
+        <a href="#rights">Права</a>
+        <a href="#features">Преимущества</a>
+        <a href="#contact">Контакты</a>
+      </div>
     </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container hero-content">
+      <div class="hero-badge">🌐 Свобода самовыражения начинается здесь</div>
+      <h1>У каждого есть право<br><span>на своё BIO</span></h1>
+      <p>
+        YoBio — это место, где ты можешь показать себя миру так, как хочешь именно ты.
+        Ссылки, описание, контакты, стиль, личность — всё в одном месте.
+      </p>
+      <div class="hero-buttons">
+        <a href="#contact" class="btn btn-primary">Связаться</a>
+        <a href="#about" class="btn btn-secondary">Узнать больше</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container">
+      <h2 class="section-title">Что такое YoBio?</h2>
+      <p class="section-subtitle">
+        Это платформа для личных bio-страниц. У каждого человека должна быть возможность
+        рассказать о себе, оставить ссылки, контакты и создать своё цифровое пространство.
+      </p>
+
+      <div class="cards">
+        <div class="card">
+          <div class="card-icon">👤</div>
+          <h3>Личное BIO</h3>
+          <p>
+            Создавай свою уникальную bio-страницу и рассказывай о себе так, как считаешь нужным.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="card-icon">🔗</div>
+          <h3>Все ссылки в одном месте</h3>
+          <p>
+            Telegram, Discord, YouTube, Instagram, GitHub и любые другие ссылки можно собрать на одной странице.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="card-icon">⚡</div>
+          <h3>Быстро и красиво</h3>
+          <p>
+            Минимализм, современный дизайн и удобство — без лишней херни и перегруза.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RIGHTS -->
+  <section id="rights">
+    <div class="container">
+      <div class="rights-box">
+        <h2>Каждый имеет право на своё BIO</h2>
+        <p>
+          В интернете у каждого должен быть свой уголок. Своя страница. Своя история.
+          Свой стиль. Свои ссылки. Своя подача.<br><br>
+          <strong>YoBio</strong> создан именно для этого — чтобы любой человек мог показать,
+          кто он есть, без ограничений и без лишнего мусора.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section id="features">
+    <div class="container">
+      <h2 class="section-title">Почему именно YoBio?</h2>
+      <p class="section-subtitle">
+        Потому что био — это не просто текст. Это твоя цифровая визитка.
+      </p>
+
+      <div class="cards">
+        <div class="card">
+          <div class="card-icon">🎨</div>
+          <h3>Красивый стиль</h3>
+          <p>Современный дизайн, который выглядит мощно и дорого даже без сложных настроек.</p>
+        </div>
+
+        <div class="card">
+          <div class="card-icon">📱</div>
+          <h3>Адаптивность</h3>
+          <p>Сайт отлично смотрится как на ПК, так и на телефоне.</p>
+        </div>
+
+        <div class="card">
+          <div class="card-icon">🛡️</div>
+          <h3>Твоё пространство</h3>
+          <p>Ты решаешь, что показывать, как оформлять и как представлять себя.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="container">
+      <div class="contact-box">
+        <h2>Связаться с нами</h2>
+        <p>
+          Если у тебя есть вопросы, предложения или нужна поддержка —
+          просто напиши нам.
+        </p>
+
+        <a class="btn btn-primary" href="mailto:support@yobio.eu.org">Написать в поддержку</a>
+
+        <div class="email-list">
+          <a class="email-item" href="mailto:support@yobio.eu.org">📩 support@yobio.eu.org</a>
+          <a class="email-item" href="mailto:yourgmail@gmail.com">📧 askfornova@gmail.com</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    © 2026 YoBio — Твоё био, твои правила.
+  </footer>
 
 </body>
 </html>
