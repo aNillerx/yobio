@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Gallery</title>
+  <title>Галерея</title>
   <style>
     * {
       margin: 0;
@@ -17,13 +17,24 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
       padding: 40px 20px;
+      color: white;
+      font-family: sans-serif;
+    }
+
+    .top-heading {
+      font-size: 3rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      margin-bottom: 30px;
+      text-align: center;
+      text-shadow: 0 0 10px rgba(124, 58, 237, 0.5);
     }
 
     .container {
       width: 100%;
       max-width: 1200px;
+      flex: 1; /* Чтобы контент занимал доступное пространство */
     }
 
     .gallery-grid {
@@ -89,24 +100,33 @@
     .cf-link:hover svg {
       fill: #ffffff;
     }
+
+    .footer {
+      font-size: 0.8rem;
+      color: #9ca3af;
+      margin-top: 40px;
+      text-align: center;
+    }
   </style>
 </head>
 <body>
 
+  <h1 class="top-heading">Голая мама гаврилы</h1>
+
   <div class="container">
     <div class="gallery-grid">
-      <div class="gallery-item"><img src="1.jpg" alt=""></div>
-      <div class="gallery-item"><img src="2.jpg" alt=""></div>
-      <div class="gallery-item"><img src="3.jpg" alt=""></div>
-      <div class="gallery-item"><img src="4.jpg" alt=""></div>
-      <div class="gallery-item"><img src="5.jpg" alt=""></div>
-      <div class="gallery-item"><img src="6.jpg" alt=""></div>
-      <div class="gallery-item"><img src="7.jpg" alt=""></div>
-      <div class="gallery-item"><img src="8.jpg" alt=""></div>
-      <div class="gallery-item"><img src="9.jpg" alt=""></div>
-      <div class="gallery-item"><img src="10.jpg" alt=""></div>
-      <div class="gallery-item"><img src="11.jpg" alt=""></div>
-      <div class="gallery-item"><img src="12.jpg" alt=""></div>
+      <div class="gallery-item"><img src="1.jpg" alt="Image 1"></div>
+      <div class="gallery-item"><img src="2.jpg" alt="Image 2"></div>
+      <div class="gallery-item"><img src="3.jpg" alt="Image 3"></div>
+      <div class="gallery-item"><img src="4.jpg" alt="Image 4"></div>
+      <div class="gallery-item"><img src="5.jpg" alt="Image 5"></div>
+      <div class="gallery-item"><img src="6.jpg" alt="Image 6"></div>
+      <div class="gallery-item"><img src="7.jpg" alt="Image 7"></div>
+      <div class="gallery-item"><img src="8.jpg" alt="Image 8"></div>
+      <div class="gallery-item"><img src="9.jpg" alt="Image 9"></div>
+      <div class="gallery-item"><img src="10.jpg" alt="Image 10"></div>
+      <div class="gallery-item"><img src="11.jpg" alt="Image 11"></div>
+      <div class="gallery-item"><img src="12.jpg" alt="Image 12"></div>
     </div>
 
     <div class="links-container">
@@ -122,6 +142,8 @@
       </a>
     </div>
   </div>
+
+  <div class="footer">я вас обманул</div>
 
 </body>
 </html>
