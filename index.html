@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Галерея</title>
+  <title>Gallery</title>
   <style>
     * {
       margin: 0;
@@ -34,7 +34,6 @@
     .container {
       width: 100%;
       max-width: 1200px;
-      flex: 1; /* Чтобы контент занимал доступное пространство */
     }
 
     .gallery-grid {
@@ -100,18 +99,11 @@
     .cf-link:hover svg {
       fill: #ffffff;
     }
-
-    .footer {
-      font-size: 0.8rem;
-      color: #9ca3af;
-      margin-top: 40px;
-      text-align: center;
-    }
   </style>
 </head>
 <body>
 
-  <h1 class="top-heading">Голая мама гаврилы</h1>
+  <h1 class="top-heading">Gallery</h1>
 
   <div class="container">
     <div class="gallery-grid">
@@ -130,20 +122,18 @@
     </div>
 
     <div class="links-container">
-      <a href="https://www.curseforge.com/members/2xstudio/projects" target="_blank" class="cf-link">
+      <a href="https://www.curseforge.com/members/2xstudio/projects" target="_blank" class="cf-link" aria-label="CurseForge Profile">
         <svg viewBox="0 0 24 24">
           <path d="M19.54 11.08a.33.33 0 00-.22-.11h-3.41a.33.33 0 01-.22-.11L12.38 7.4a.33.33 0 00-.46 0L8.61 10.86a.33.33 0 01-.22.11H4.83a.33.33 0 00-.22.11l-3.3 4.14a.32.32 0 000 .4l10.23 9.07a.64.64 0 00.92 0l10.23-9.07a.32.32 0 000-.4zM12 1.35L5.73 6a.32.32 0 000 .5l1.6 1.18a.33.33 0 00.41 0L12 4.67l4.26 3.01a.33.33 0 00.41 0l1.6-1.18a.32.32 0 000-.5z"/>
         </svg>
       </a>
-      <a href="https://www.curseforge.com/minecraft-bedrock/maps/zombie-attack" target="_blank" class="cf-link">
+      <a href="https://www.curseforge.com/minecraft-bedrock/maps/zombie-attack" target="_blank" class="cf-link" aria-label="Zombie Attack Map">
         <svg viewBox="0 0 24 24">
           <path d="M12 2A10 10 0 002 12a10 10 0 0010 10 10 10 0 0010-10A10 10 0 0012 2zm1 14.5h-2v-2h2v2zm0-3.5h-2V7h2v6z"/>
         </svg>
       </a>
     </div>
   </div>
-
-  <div class="footer">я вас обманул</div>
 
 </body>
 </html>
