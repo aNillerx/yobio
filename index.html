@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>yobio</title>
+  <!-- Футуристичный шрифт с Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;900&display=swap" rel="stylesheet">
+  
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #06070c;
+      overflow: hidden;
+      font-family: 'Orbitron', -apple-system, sans-serif;
+    }
+
+    /* Фоновое мягкое свечение */
+    .glow-backdrop {
+      position: absolute;
+      width: 400px;
+      height: 200px;
+      background: radial-gradient(circle, rgba(0, 242, 254, 0.18) 0%, rgba(79, 172, 254, 0) 70%);
+      filter: blur(40px);
+      pointer-events: none;
+      transition: transform 0.15s ease-out;
+    }
+
+    /* Неоновый текст */
+    .neon-text {
+      position: relative;
+      font-size: clamp(3rem, 12vw, 8rem);
+      font-weight: 900;
+      letter-spacing: 0.35em;
+      text-transform: lowercase;
+      color: #ffffff;
+      user-select: none;
+      cursor: default;
+      
+      /* Многослойное неоновое свечение (cyan / blue) */
+      text-shadow:
+        0 0 5px #fff,
+        0 0 10px #fff,
+        0 0 20px #00f2fe,
+        0 0 40px #00f2fe,
+        0 0 80px #4facfe,
+        0 0 120px #4facfe;
+
+      animation: neon-pulse 3s infinite alternate ease-in-out;
+    }
+
+    /* Анимация мягкой пульсации */
+    @keyframes neon-pulse {
+      0%, 100% {
+        text-shadow:
+          0 0 4px #fff,
+          0 0 10px #fff,
+          0 0 20px #00f2fe,
+          0 0 40px #00f2fe,
+          0 0 80px #4facfe,
+          0 0 120px #4facfe;
+        opacity: 0.98;
+      }
+      50% {
+        text-shadow:
+          0 0 2px #fff,
+          0 0 6px #fff,
+          0 0 15px #00f2fe,
+          0 0 30px #00f2fe,
+          0 0 60px #4facfe,
+          0 0 90px #4facfe;
+        opacity: 0.9;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="glow-backdrop" id="backdrop"></div>
+  <h1 class="neon-text" id="text">horizon</h1>
+
+  <script>
+    // Небольшой интерактив: фон мягко следует за курсором
+    const backdrop = document.getElementById('backdrop');
+    const text = document.getElementById('text');
+
+    window.addEventListener('mousemove', (e) => {
+      const x = (e.clientX - window.innerWidth / 2) * 0.05;
+      const y = (e.clientY - window.innerHeight / 2) * 0.05;
+      
+      backdrop.style.transform = `translate(${x * 2}px, ${y * 2}px)`;
+      text.style.transform = `translate(${x}px, ${y}px)`;
+    });
+  </script>
+</body>
+</html>
